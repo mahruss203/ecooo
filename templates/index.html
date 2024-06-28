@@ -3,78 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Predict Protein Class</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        h1 {
-            color: #333;
-        }
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #666;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-        h2 {
-            color: #333;
-        }
-    </style>
+    <!-- Bootstrap CSS via CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Optional: Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <h1>Predict Protein Class</h1>
-    <form action="/" method="POST">
-        <label for="mcg">McGeoch's Method for Signal Sequence Recognition (mcg):</label>
-        <input type="text" id="mcg" name="mcg"><br><br>
-        <label for="gvh">von Heijne's Method for Signal Sequence Recognition (gvh):</label>
-        <input type="text" id="gvh" name="gvh"><br><br>
-        <label for="lip">von Heijne's Signal Peptidase II Consensus Sequence Score (lip):</label>
-        <input type="text" id="lip" name="lip"><br><br>
-        <label for="chg">Presence of Charge on N-Terminus of Predicted Lipoproteins (chg):</label>
-        <input type="text" id="chg" name="chg"><br><br>
-        <label for="aac">Score of Discriminant Analysis of Amino Acid Content (aac):</label>
-        <input type="text" id="aac" name="aac"><br><br>
-        <label for="alm1">ALOM Membrane Spanning Region Prediction Program Score (alm1):</label>
-        <input type="text" id="alm1" name="alm1"><br><br>
-        <label for="alm2">ALOM Program Score After Excluding Cleavable Signal Regions (alm2):</label>
-        <input type="text" id="alm2" name="alm2"><br><br>
-        <input type="submit" value="Predict">
-    </form>
-    {% if prediction %}
-        <h2>Prediction: {{ prediction }}</h2>
-    {% endif %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="mb-4">Predict Protein Class</h1>
+                <form action="/" method="POST">
+                    <div class="form-group">
+                        <label for="mcg">McGeoch's method score:</label>
+                        <input type="text" id="mcg" name="mcg" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="gvh">von Heijne's method score:</label>
+                        <input type="text" id="gvh" name="gvh" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="lip">von Heijne's Signal Peptidase II score:</label>
+                        <input type="text" id="lip" name="lip" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="chg">Presence of charge on N-terminus:</label>
+                        <input type="text" id="chg" name="chg" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="aac"> analysis of amino score:</label>
+                        <input type="text" id="aac" name="aac" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="alm1">ALOM membrane score:</label>
+                        <input type="text" id="alm1" name="alm1" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="alm2">ALOM score after excluding :</label>
+                        <input type="text" id="alm2" name="alm2" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Predict</button>
+                </form>
+                {% if prediction %}
+                    <h2 class="mt-4">Prediction: {{ prediction }}</h2>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>
