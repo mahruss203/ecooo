@@ -1,13 +1,19 @@
 from flask import Flask, request, render_template
 import joblib
 import numpy as np
+import pickle
 
 app = Flask(__name__)
 
 # Memuat model dan objek preprocessing
-classifier = joblib.load('svm_model.joblib')
-label_encoder = joblib.load('label_encoder.joblib')
-scaler = joblib.load('scaler.joblib')
+with open('svm_model.pkl', 'rb') as f:
+    classifier = pickle.load(f)
+
+with open('label_encoder.pkl', 'rb') as f:
+    label_encoder = pickle.load(f)
+
+with open('scaler.pkl', 'rb') as f:
+    scaler = pickle.load(f)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
