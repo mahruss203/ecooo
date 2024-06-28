@@ -4,3 +4,4 @@ scikit-learn==0.24.2
 joblib==1.0.1
 Werkzeug==0.16.1
 pickle
+numpy
